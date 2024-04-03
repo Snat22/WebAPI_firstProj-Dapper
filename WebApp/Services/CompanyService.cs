@@ -19,8 +19,8 @@ public class CompanyService : ICompanyService
         try
         {
            
-        var sql = @$"insert into companyes(name,department_id,address)
-                valuse('{add.Name}',{add.Department_Id},'{add.Address}')";
+        var sql = @$"insert into companyes(name,address)
+                valuse('{add.Name}','{add.Address}')";
                 var inserted = _context.Connection().Execute(sql);
             if (inserted > 0) return new Responses<string>("Successfully created student");
             return new Responses<string>(HttpStatusCode.BadRequest,"Error"); 
@@ -75,7 +75,7 @@ public class CompanyService : ICompanyService
         try
         {
             
-        var sql = @$"update companyes set name='{upd.Name},department_id={upd.Department_Id},address='{upd.Address}' where id = {upd.Id}";
+        var sql = @$"update companyes set name='{upd.Name},address='{upd.Address}' where id = {upd.Id}";
         var updated = _context.Connection().Execute(sql);
         if(updated > 0) return new Responses<string>("Succesfully updated");
         return new Responses<string>(HttpStatusCode.BadRequest,"Updated not completed");
