@@ -9,4 +9,5 @@ public class Employee
     public string Phone { get; set; }
     public string Address { get; set; }
     public string Email { get; set; }
+    public int Department_Id { get; set; }
 }
