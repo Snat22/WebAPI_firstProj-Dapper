@@ -17,8 +17,8 @@ public class DepartmentService : IDepartmentService
     {
         try
         {
-            var sql = @$"insert into departments(name,employee_id)
-            values('{add.Name}',{add.Employee_Id})";
+            var sql = @$"insert into departments(name,company_id)
+            values('{add.Name}',{add.Company_Id})";
             var inserted = _context.Connection().Execute(sql);
             if(inserted > 0) return new Responses<string>("Added Succesfully");
             return new Responses<string>(HttpStatusCode.BadRequest,"Error");
@@ -66,7 +66,7 @@ try
     {
         try
         {
-            var sql = @$"update departments set name='{upd.Name}',employee_id={upd.Employee_Id} where id = {upd.Id}";
+            var sql = @$"update departments set name='{upd.Name}',company_id={upd.Company_Id} where id = {upd.Id}";
             var updated = _context.Connection().Execute(sql);
             if(updated > 0) return new Responses<string>("Yet Updated");
             return new Responses<string>(HttpStatusCode.BadRequest,"Error");
