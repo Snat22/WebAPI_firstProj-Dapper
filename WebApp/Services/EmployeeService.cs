@@ -19,8 +19,8 @@ public class EmployeeService : IEmployeeService
         try
         {
             
-        var sql = @$"insert into employees(fristname,lastname,age,phone,address,email)
-                values('{add.FristName}','{add.LastName}',{add.Age},'{add.Phone}','{add.Address}','{add.Email}')";
+        var sql = @$"insert into employees(fristname,lastname,age,phone,address,email,department_id)
+                values('{add.FristName}','{add.LastName}',{add.Age},'{add.Phone}','{add.Address}','{add.Email}',{add.Department_Id})";
                 var inserted = _context.Connection().Execute(sql);
                 if(inserted > 0) return new Responses<string>("Added succesfully");
                 return new Responses<string>(HttpStatusCode.BadRequest,"Error");
@@ -72,7 +72,7 @@ public class EmployeeService : IEmployeeService
         
         try
         {
-            var sql = @$"update employees set fristname='{upd.FristName}',lastname='{upd.LastName}',age={upd.Age},phone='{upd.Phone}',address='{upd.Address}',email='{upd.Email}' where id= {upd.Id}";
+            var sql = @$"update employees set fristname='{upd.FristName}',lastname='{upd.LastName}',age={upd.Age},phone='{upd.Phone}',address='{upd.Address}',email='{upd.Email}',department_id = {upd.Department_Id} where id= {upd.Id}";
             var updated = _context.Connection().Execute(sql);
             if(updated > 0) return new Responses<string>("Yet Updated");
             return new Responses<string>(HttpStatusCode.BadRequest,"Error");
